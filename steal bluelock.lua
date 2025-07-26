@@ -121,13 +121,11 @@ end)
 
 
 
--- Script to convert all ProximityPrompts from hold to tap
+-- FAST STEAL ICIN
 
 local function convertProximityPrompt(prompt)
-    -- Set HoldDuration to 0 to make it instant (tap instead of hold)
     prompt.HoldDuration = 0
     
-    -- Optional: Update the ActionText to reflect the change
     if prompt.ActionText == "Hold" or prompt.ActionText == "" then
         prompt.ActionText = "Press"
     end
@@ -135,7 +133,7 @@ local function convertProximityPrompt(prompt)
     print("Converted ProximityPrompt:", prompt.Parent.Name)
 end
 
--- Convert all existing ProximityPrompts in the workspace
+
 local function convertAllExistingPrompts()
     for _, descendant in pairs(workspace:GetDescendants()) do
         if descendant:IsA("ProximityPrompt") then
@@ -144,17 +142,17 @@ local function convertAllExistingPrompts()
     end
 end
 
--- Convert any new ProximityPrompts that get added
+
 local function onDescendantAdded(descendant)
     if descendant:IsA("ProximityPrompt") then
         convertProximityPrompt(descendant)
     end
 end
 
--- Run the conversion
+
 convertAllExistingPrompts()
 
--- Listen for new ProximityPrompts being added
+
 workspace.DescendantAdded:Connect(onDescendantAdded)
 
-print("ProximityPrompt converter script loaded - all prompts converted to tap!")
+print("Script calisdi baba")
